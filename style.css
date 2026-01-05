@@ -596,14 +596,18 @@ nav ul li a:hover {
     gap: 30px;
 }
 
-.game-card {
+.game-card, 
+.game-card:visited { 
+    display: block; /* Asegura que la tarjeta sea un bloque */
+    text-decoration: none; /* Quita el subrayado del enlace */
+    color: inherit; /* Usa el color de texto normal (negro), no el azul/morado */
+    
     background: #ffffff;
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid #e0e0e0;
     transition: transform 0.3s, box-shadow 0.3s;
 }
-
 .game-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 10px 30px rgba(0, 76, 255, 0.15);

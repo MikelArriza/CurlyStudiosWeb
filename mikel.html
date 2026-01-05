@@ -2,14 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mikel Arrizabalaga Munduate · Curly Studios</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Mikel Arrizabalaga Munduate · Curly Studios</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Estilos generales para consistencia */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; margin: 0; }
+        .container { max-width: 800px; margin: 0 auto; padding: 2rem; }
+        
+        /* Profile Section existente */
+        .profile { text-align: center; margin-bottom: 2rem; }
+        .profile-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 3px solid #333; }
+        .profile-links a { margin: 0 10px; text-decoration: none; color: #007bff; font-weight: bold; }
+
+        /* NUEVOS ESTILOS */
+        h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 3rem; color: #222; }
+        
+        /* Grid de Habilidades */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .skill-category h3 { font-size: 1.1rem; color: #555; margin-bottom: 10px; }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag { background: #f0f0f0; padding: 5px 12px; border-radius: 15px; font-size: 0.9rem; font-weight: 500; }
+
+        /* Trayectoria */
+        .timeline-item { margin-bottom: 20px; border-left: 3px solid #007bff; padding-left: 20px; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -9px; top: 5px; width: 15px; height: 15px; background: #007bff; border-radius: 50%; }
+        .role { font-weight: bold; font-size: 1.1rem; }
+        .company { color: #666; font-style: italic; }
+        .date { font-size: 0.85rem; color: #888; display: block; margin-bottom: 5px; }
+
+        /* Proyectos Destacados */
+        .project-card { background: #fafafa; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #eee; }
+        .project-tech { color: #007bff; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; }
+    </style>
 </head>
 <body>
 
-<header>
-    <nav>
-        <a href="index.html" class="logo">CURLY STUDIOS</a>
+<header style="transform: translateY(0); position: relative; padding: 1rem; background: #f8f9fa;">
+    <nav style="display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto;">
+        <a href="index.html">
+            <img src="resources/CurlyLogo.png" alt="Curly Logo" class="small-logo" style="height: 40px;">
+        </a>
+        <ul style="list-style: none; display: flex; gap: 20px; padding: 0;">
+            <li><a href="index.html#about" style="text-decoration: none; color: #333;">About Us</a></li>
+            <li><a href="index.html#games" style="text-decoration: none; color: #333;">Games</a></li>
+            <li><a href="index.html#footer" style="text-decoration: none; color: #333;">Contact</a></li>
+        </ul>
     </nav>
 </header>
 
@@ -19,9 +57,10 @@
     <h1>Mikel Arrizabalaga</h1>
     <h3>Programmer · Technical Artist</h3>
 
-    <p>
+    <p style="max-width: 600px; margin: 0 auto 1.5rem auto;">
         Specialized in gameplay programming, tools development and technical art.
         Focused on clean architecture, performance and visual polish in Unity.
+        Passionate about bridging the gap between art and code.
     </p>
 
     <div class="profile-links">
@@ -30,6 +69,88 @@
         <a href="https://www.artstation.com/mikelarri" target="_blank">ArtStation</a>
     </div>
 </section>
+
+<section class="container">
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+        <div class="skill-category">
+            <h3>Engine & Logic</h3>
+            <div class="tags">
+                <span class="tag">Unity 3D/2D</span>
+                <span class="tag">C# Scripting</span>
+                <span class="tag">OOP & Patterns</span>
+                <span class="tag">Optimization</span>
+                <span class="tag">Steam SDK</span>
+            </div>
+        </div>
+        <div class="skill-category">
+            <h3>Technical Art</h3>
+            <div class="tags">
+                <span class="tag">Shader Graph</span>
+                <span class="tag">VFX Graph</span>
+                <span class="tag">Lighting</span>
+                <span class="tag">Blender, Maya</span>
+                <span class="tag">Zbrush</span>
+                <span class="tag">Substance Painter</span>
+            </div>
+        </div>
+        <div class="skill-category">
+            <h3>Tools & Workflow</h3>
+            <div class="tags">
+                <span class="tag">Git / GitHub, GitLab, Azure DevOps</span>
+                <span class="tag">Visual Studio, Visual Studio Code</span>
+                <span class="tag">Obsidian</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container">
+    <h2>Experience</h2>
+    
+    <div class="timeline-item">
+        <div class="role">Gameplay Programmer & Tech Artist</div>
+        <span class="company">Curly Studios</span>
+        <span class="date">2025 - Present</span>
+        <p>Lead developer for all programming stuff and technical art integration. Also animated most of the game and made the port to steam, steamdeck and switch</p>
+    </div>
+
+    <div class="timeline-item">
+        <div class="role">Unity Developer (Internship)</div>
+        <span class="company">IIS Biobizkaia</span>
+        <span class="date">2025 - Present</span>
+        <p>Making VR experience for doctors training in emergency procedures in VIROO Unity.</p>
+    </div>
+
+    <div class="timeline-item">
+        <div class="role">Unity Developer (Internship)</div>
+        <span class="company">Baleuko S L</span>
+        <span class="date">2025 - 2025</span>
+        <p>Prototyping mobile games and publishing them on Web and Play Store</p>
+    </div>
+</section>
+
+<section class="container">
+    <h2>Projects</h2>
+    <p style="margin-bottom: 20px; color: #666;">Specific technical challenges I've solved:</p>
+    
+    <div class="project-card">
+        <div class="project-tech">Shader Graph & HLSL</div>
+        <h3>Stylized Water System</h3>
+        <p>Developed a performant water shader with depth-based color absorption, foam generation at shorelines, and interactive wave physics based on player movement.</p>
+    </div>
+</section>
+
+<footer>
+        <section id="footer" class="footer">
+            <p>&copy; 2025 Curly Studios. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/curly_studios/" target="_blank">Instagram</a> |
+                <a href="https://es.linkedin.com/company/curly-studios" target="_blank">LinkedIn</a> |
+                <a href="mailto:curlygamestudios@gmail.com">Gmail</a>
+            </div>
+        </section>
+    </footer>
 
 </body>
 </html>
