@@ -570,6 +570,7 @@ footer {
     font-size: 0.9rem;
     color: #555;
 }
+
 @media (max-width: 900px) {
 
     .container {
@@ -578,6 +579,18 @@ footer {
     .small-logo {
         width: 90px;
         height: auto;
+    }
+    h1{
+        letter-spacing: 1px;
+    }
+    h2{
+        font-size: 2rem;
+        margin-bottom: 25px;
+        letter-spacing: 1px;
+    }
+    h3{
+        font-size: 1.6rem;
+        letter-spacing: 1px;
     }
 
     nav {
@@ -628,9 +641,19 @@ footer {
 
     body {
         background-attachment: scroll;
+        font-size: 18px;
+        line-height: 1.6;
     }
-
-    h1, h2, h3 {
+    h1{
+        letter-spacing: 1px;
+    }
+    h2{
+        font-size: 2rem;
+        margin-bottom: 25px;
+        letter-spacing: 1px;
+    }
+    h3{
+        font-size: 1.6rem;
         letter-spacing: 1px;
     }
 
