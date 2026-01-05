@@ -2,12 +2,14 @@
    ESTILOS ESPECÍFICOS PARA LA FICHA DEL JUEGO
    (game.css)
    ========================================= */
+
 @font-face {
     font-family: 'ConsolaMono';
     src: url('resources/ConsolaMono-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
 }
+
 /* 1. Ajustes del cuerpo de la página */
 .game-page-body {
     font-family: 'ConsolaMono', monospace;
@@ -42,7 +44,7 @@
     color: #004cff;
     margin-bottom: 10px;
     text-transform: uppercase;
-    /* Hereda la fuente 'ConsolaMono' de style.css automáticamente */
+    /* Hereda la fuente 'ConsolaMono' automáticamente */
 }
 
 .subtitle {
@@ -62,14 +64,14 @@
     border-radius: 12px;
     overflow: hidden; /* Recorta las esquinas del video */
     
-    box-shadow: 0 20px 50px rgba(255, 255, 255, 0.25); /* Sombra potente estilo cine */
-    border: 4px solid #ffffff; /* Marco negro */
+    box-shadow: 0 20px 50px rgba(255, 255, 255, 0.25); /* Sombra potente */
+    border: 4px solid #ffffff; /* Marco blanco */
     background: #ffffff;
-    line-height: 0; /* Evita espacios blancos extraños debajo del video */
+    line-height: 0; /* Evita espacios blancos extraños */
 }
 
 .game-video {
-    width: 400%;
+    width: 100%; /* CORREGIDO: Antes estaba en 400% */
     height: auto;
     display: block;
     outline: none;
@@ -114,12 +116,12 @@
 
 .steam-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(0, 76, 255, 0.3); /* Resplandor azul al pasar el mouse */
-    background: linear-gradient(135deg, #2a475e 0%, #004cff 100%); /* Cambio de color sutil */
+    box-shadow: 0 15px 30px rgba(0, 76, 255, 0.3); /* Resplandor azul */
+    background: linear-gradient(135deg, #2a475e 0%, #004cff 100%);
 }
 
 /* =========================================
-   SECCIÓN DE INFORMACIÓN (Historia y Specs)
+   SECCIÓN DE INFORMACIÓN (Historia)
    ========================================= */
 
 .divider {
@@ -131,11 +133,14 @@
 
 .game-info {
     display: grid;
-    /* 2 partes de texto por 1 parte de especificaciones */
-    grid-template-columns: 2fr 1fr; 
+    /* 2 partes de texto por 1 parte de especificaciones/tarjetas si quisieras poner algo al lado */
+    grid-template-columns: 1fr; 
     gap: 50px;
     margin-bottom: 60px;
     align-items: start;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .info-text h2 {
@@ -152,40 +157,123 @@
     line-height: 1.8;
 }
 
-/* --- Caja de Detalles Técnicos --- */
-.game-specs {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+/* =========================================
+   TARJETAS DE SISTEMAS Y PLATAFORMAS
+   (Corregido: Ahora fuera del Media Query para que se vean en PC)
+   ========================================= */
+
+.system-support {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 15px;
 }
 
-.game-specs h3 {
+.system-support h3 {
+    font-size: 1.5rem;
     margin-bottom: 20px;
-    font-size: 1.4rem;
-    border-bottom: 3px solid #004cff;
+    color: #1a1a1a;
+    border-bottom: 2px solid #004cff;
     display: inline-block;
+    padding-bottom: 5px;
 }
 
-.game-specs ul {
-    list-style: none;
-    padding: 0;
+/* --- Grid de Sistemas Operativos --- */
+.os-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
 }
 
-.game-specs li {
-    margin-bottom: 15px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.95rem;
-    border-bottom: 1px solid #f0f0f0;
-    padding-bottom: 10px;
-    color: #333;
+.os-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f5f5f5;
+    padding: 20px 15px;
+    border-radius: 12px;
+    width: 120px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    cursor: default;
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
-.game-specs li strong {
-    color: #004cff;
-    display: inline-block;
-    width: 90px; /* Alinea los valores */
+.os-card i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* Colores específicos por sistema */
+.os-card.windows { background: #0078d7; color: #fff; }
+.os-card.windows i { color: #fff; }
+
+.os-card.linux { background: #333333; color: #fff; }
+.os-card.linux i { color: #fff; }
+
+.os-card.steamdeck { background: #171a21; color: #fff; }
+.os-card.steamdeck i { color: #fff; }
+
+.os-card.switch { background: #e60012; color: #fff; }
+.os-card.switch i { color: #fff; }
+
+.os-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+
+/* --- Grid de Tiendas/Plataformas --- */
+.platform-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.p-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 25px;
+    border-radius: 10px;
+    background: #f5f5f5;
+    color: #1a1a1a;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    min-width: 200px;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.p-card i {
+    font-size: 2rem;
+}
+
+.p-card-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.platform-name {
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.action {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Colores Tiendas */
+.steam-card { background: #171a21; color: #fff; }
+.steam-card:hover { background: #004cff; }
+
+.switch-card { background: #e60012; color: #fff; }
+.switch-card:hover { background: #ff4d4d; }
+
+.p-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
 }
 
 /* =========================================
@@ -207,8 +295,8 @@
 
 .screen-img {
     width: 100%;
-    height: 220px; /* Altura fija para que todas se vean iguales */
-    object-fit: cover; /* Recorta la imagen para llenar el hueco sin deformar */
+    height: 220px; /* Altura fija */
+    object-fit: cover; /* Recorta la imagen para llenar */
     border-radius: 10px;
     border: 1px solid #ccc;
     transition: transform 0.3s ease, border-color 0.3s ease;
@@ -219,7 +307,7 @@
     transform: scale(1.04);
     border-color: #004cff;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    z-index: 2; /* Para que quede por encima de las otras al crecer */
+    z-index: 2;
 }
 
 /* =========================================
@@ -227,13 +315,8 @@
    ========================================= */
 
 @media (max-width: 900px) {
-    .game-info {
-        grid-template-columns: 1fr; /* Una sola columna: texto arriba, specs abajo */
-        gap: 30px;
-    }
-
     .game-hero h1 {
-        font-size: 2.2rem; /* Título más pequeño */
+        font-size: 2.2rem;
     }
 
     .steam-button {
@@ -243,11 +326,27 @@
     }
     
     .video-wrapper {
-        border-width: 2px; /* Borde más fino en móvil */
+        border-width: 2px;
     }
     
     .screen-img {
-        height: auto; /* Altura automática en móvil para ver la imagen completa */
+        height: auto; /* Altura automática en móvil para ver imagen completa */
+    }
+
+    /* Centrar las tarjetas en móvil */
+    .os-cards, .platform-cards {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 700px) {
+    .os-cards, .platform-cards {
+        flex-direction: column;
+        align-items: center;
     }
     
+    .os-card, .p-card {
+        width: 100%; /* Ocupan todo el ancho en móviles pequeños */
+        max-width: 300px;
+    }
 }
