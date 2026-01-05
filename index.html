@@ -9,8 +9,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 </head>
-<body>
-
+<body class="no-scroll">
+    <div class="loader-wrapper">
+    <div class="loader"></div>
+    
+    <div class="loading-text">Loading</div>
+</div>
     <header>
         <nav>
             <img src="resources/CurlyLogo.png" alt="Curly Logo" class="small-logo">
@@ -23,13 +27,13 @@
     </header>
 
     <section id="hero">
-        <div class="hero-content">
+        <div class="hero-content animate-on-load">
             <img src="resources/CurlyLogo.png" alt="Curly Studios Logo" class="hero-logo">
             <p>· our tiny indie game studio ·</p>
         </div>
     </section>
 
-    <section id="about" class="container">
+    <section id="about" class="container animate-on-load">
         <h2>About Us</h2>
         <div class="about-grid">
             <div class="studio-info">
@@ -55,18 +59,18 @@
     </section>
 
     <section id="games" class="container">
-        <h2>Our Games</h2>
-        <div class="games-grid">
-            <div class="game-card">
-                <div class="game-img" style="background-image: url('resources/DATBLogo.jpg');"></div>
-                <div class="game-detail">
-                    <h3>DON´T ANGER THE BOSS</h3>
-                    <p>Charlie must face his BOSS</p>
-                </div>
+    <h2>Our Games</h2>
+    <div class="games-grid">
+        <a href="DATB.html" class="game-card">
+            <div class="game-img" style="background-image: url('resources/DATBLogo.jpg');"></div>
+            <div class="game-detail">
+                <h3>DON´T ANGER THE BOSS</h3>
+                <p>Charlie must face his BOSS</p>
             </div>
-
-        </div>
-    </section>
+        </a>
+        
+    </div>
+</section>
 
     <footer>
         <section id="footer" class="footer">
@@ -78,5 +82,6 @@
         </div>
         </section>
     </footer>
+    <script src="main.js"></script>
 </body>
 </html>

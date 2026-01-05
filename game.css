@@ -1,0 +1,253 @@
+/* =========================================
+   ESTILOS ESPECÍFICOS PARA LA FICHA DEL JUEGO
+   (game.css)
+   ========================================= */
+@font-face {
+    font-family: 'ConsolaMono';
+    src: url('resources/ConsolaMono-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+/* 1. Ajustes del cuerpo de la página */
+.game-page-body {
+    font-family: 'ConsolaMono', monospace;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.85), rgba(236, 236, 236, 0.85)),
+        url('resources/BackGround.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    line-height: 1.6;
+}
+
+/* Ajuste para bajar el contenido porque el header es fixed */
+.game-container {
+    padding-top: 100px; 
+    padding-bottom: 60px;
+}
+
+/* =========================================
+   SECCIÓN HERO (Título y Video)
+   ========================================= */
+
+.game-hero {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.game-hero h1 {
+    font-size: 3rem;
+    color: #004cff;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    /* Hereda la fuente 'ConsolaMono' de style.css automáticamente */
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+    font-family: 'ConsolaMono', monospace;
+    font-weight: 300;
+}
+
+/* --- Contenedor del Video Local --- */
+.video-wrapper {
+    width: 100%;
+    max-width: 900px; /* Ancho máximo del video */
+    margin: 0 auto 40px auto; /* Centrado */
+    
+    border-radius: 12px;
+    overflow: hidden; /* Recorta las esquinas del video */
+    
+    box-shadow: 0 20px 50px rgba(255, 255, 255, 0.25); /* Sombra potente estilo cine */
+    border: 4px solid #ffffff; /* Marco negro */
+    background: #ffffff;
+    line-height: 0; /* Evita espacios blancos extraños debajo del video */
+}
+
+.game-video {
+    width: 400%;
+    height: auto;
+    display: block;
+    outline: none;
+}
+
+/* =========================================
+   BOTÓN DE STEAM
+   ========================================= */
+
+.cta-container {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.steam-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    
+    /* Degradado oficial de Steam */
+    background: linear-gradient(135deg, #171a21 0%, #1b2838 100%);
+    color: #fff;
+    
+    padding: 18px 40px;
+    border-radius: 6px;
+    text-decoration: none;
+    
+    font-family: 'ConsolaMono', monospace; 
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.steam-button img {
+    width: 28px;
+    height: 28px;
+    filter: brightness(0) invert(1); /* Asegura que el logo sea blanco */
+}
+
+.steam-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 76, 255, 0.3); /* Resplandor azul al pasar el mouse */
+    background: linear-gradient(135deg, #2a475e 0%, #004cff 100%); /* Cambio de color sutil */
+}
+
+/* =========================================
+   SECCIÓN DE INFORMACIÓN (Historia y Specs)
+   ========================================= */
+
+.divider {
+    border: 0;
+    height: 1px;
+    background: #e0e0e0;
+    margin: 60px 0;
+}
+
+.game-info {
+    display: grid;
+    /* 2 partes de texto por 1 parte de especificaciones */
+    grid-template-columns: 2fr 1fr; 
+    gap: 50px;
+    margin-bottom: 60px;
+    align-items: start;
+}
+
+.info-text h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+}
+
+.info-text p {
+    margin-bottom: 15px;
+    font-family: 'ConsolaMono', monospace;
+    color: #444;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+/* --- Caja de Detalles Técnicos --- */
+.game-specs {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.game-specs h3 {
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    border-bottom: 3px solid #004cff;
+    display: inline-block;
+}
+
+.game-specs ul {
+    list-style: none;
+    padding: 0;
+}
+
+.game-specs li {
+    margin-bottom: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 10px;
+    color: #333;
+}
+
+.game-specs li strong {
+    color: #004cff;
+    display: inline-block;
+    width: 90px; /* Alinea los valores */
+}
+
+/* =========================================
+   GALERÍA DE IMÁGENES
+   ========================================= */
+
+.screenshots h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.screenshots-grid {
+    display: grid;
+    /* Grid automático: crea tantas columnas como quepan de mínimo 300px */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.screen-img {
+    width: 100%;
+    height: 220px; /* Altura fija para que todas se vean iguales */
+    object-fit: cover; /* Recorta la imagen para llenar el hueco sin deformar */
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.screen-img:hover {
+    transform: scale(1.04);
+    border-color: #004cff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    z-index: 2; /* Para que quede por encima de las otras al crecer */
+}
+
+/* =========================================
+   RESPONSIVE (Móviles y Tablets)
+   ========================================= */
+
+@media (max-width: 900px) {
+    .game-info {
+        grid-template-columns: 1fr; /* Una sola columna: texto arriba, specs abajo */
+        gap: 30px;
+    }
+
+    .game-hero h1 {
+        font-size: 2.2rem; /* Título más pequeño */
+    }
+
+    .steam-button {
+        width: 100%; /* Botón ancho completo en móvil */
+        justify-content: center;
+        font-size: 1rem;
+    }
+    
+    .video-wrapper {
+        border-width: 2px; /* Borde más fino en móvil */
+    }
+    
+    .screen-img {
+        height: auto; /* Altura automática en móvil para ver la imagen completa */
+    }
+    
+}

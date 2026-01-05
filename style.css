@@ -6,19 +6,19 @@
 }
 @font-face {
     font-family: 'ConsolaMono';
-    src: url('ConsolaMono-Bold.ttf') format('truetype');
+    src: url('resources/ConsolaMono-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
 }
 @font-face{
     font-family: 'FOT-Seurat Pro B';
-    src: url('FOT-Seurat Pro B.ttf') format('truetype');
+    src: url('resources/FOT-Seurat Pro B.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
 }
 @font-face{
     font-family: 'FOT-Seurat Pro EB';
-    src: url('FOT-Seurat Pro EB.ttf') format('truetype');
+    src: url('resources/FOT-Seurat Pro EB.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
 }
@@ -35,6 +35,131 @@ body {
     background-position: center;
     line-height: 1.6;
 }
+/* Modifica esta clase en tu CSS */
+.loader-grow {
+    transform: scale(300); /* Muy grande */
+    
+    /* TRUCO: Aumentamos el borde o sombra para "rellenar" los huecos del sprite
+       mientras crece, convirtiéndolo en una mancha blanca sólida */
+    box-shadow: 0 0 0 500px #ffffff; 
+    background-color: #ffffff;
+    border-radius: 50%; /* Opcional: lo hace más redondo al expandirse */
+
+    transition: transform 0.8s ease-in, box-shadow 0.8s ease-in;
+}
+
+
+/* El .loader-hidden del wrapper se encarga de la opacidad después.
+   Asegúrate de tener esto (ya lo tenías, pero verifica): */
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-out, visibility 0.5s;
+}
+/* 1. El fondo que cubre toda la pantalla */
+/* --- CONTENEDOR PRINCIPAL --- */
+.loader-wrapper {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    /* CAMBIO: Organiza los elementos en columna (uno debajo del otro) */
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    background-color: #004cff; /* Fondo Azul */
+    z-index: 9999;
+    /* Un poco de espacio entre el muñeco y el texto */
+    gap: 20px; 
+}
+
+/* --- EL PERSONAJE (Tintado Blanco) --- */
+.loader {
+    width: 64px;
+    height: 64px;
+    background-color: #ffffff; /* Color del tinte (Blanco) */
+    
+    /* Máscara */
+    -webkit-mask-image: url("resources/charlie_run.png");
+            mask-image: url("resources/charlie_run.png");
+    -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+    -webkit-mask-size: 640px 64px;
+            mask-size: 640px 64px;
+
+    image-rendering: pixelated; 
+    animation: charlie-run 0.8s steps(10) infinite;
+}
+
+@keyframes charlie-run {
+    from { -webkit-mask-position: 0px 0px; mask-position: 0px 0px; }
+    to   { -webkit-mask-position: -640px 0px; mask-position: -640px 0px; }
+}
+
+/* --- EL TEXTO "LOADING" --- */
+.loading-text {
+    font-family: "Courier New", Courier, monospace; /* Fuente estilo retro/máquina */
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    letter-spacing: 2px;
+}
+
+/* --- ANIMACIÓN DE LOS PUNTOS (...) --- */
+/* Usamos ::after para crear contenido dinámico después del texto */
+.loading-text::after {
+    content: ''; /* Empieza vacío */
+    animation: dots 1.5s steps(4, end) infinite;
+    
+    /* Esto es importante: asegura que el ancho de los puntos no empuje
+       el texto hacia la izquierda, manteniendo todo centrado. */
+    display: inline-block;
+    width: 0; 
+    overflow: visible; /* Deja que los puntos se vean aunque el ancho sea 0 */
+}
+
+@keyframes dots {
+    0%, 20% { content: ''; }     /* Nada */
+    40%     { content: '.'; }    /* Uno */
+    60%     { content: '..'; }   /* Dos */
+    80%, 100% { content: '...'; } /* Tres */
+}
+
+/* 4. Clase para ocultar el loader (la usaremos con JS) */
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+/* --- CSS PARA ANIMACIONES DE INTRO --- */
+
+/* 1. Estado inicial (antes de que cargue la web) */
+.animate-on-load {
+    opacity: 0;
+    /* Empieza 30px más abajo para un efecto de "subida" */
+    transform: translateY(30px); 
+    /* La magia ocurre aquí: una transición suave de 0.8 segundos */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* 2. Estado final (se activará con JS) */
+.animated-in {
+    opacity: 1;
+    transform: translateY(0); /* Vuelve a su posición original */
+}
+
+/* 3. Retrasos opcionales para efecto cascada */
+/* El primer elemento no necesita retraso */
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+.delay-4 { transition-delay: 0.8s; }
+
+
+
 
 .hero-logo {
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
@@ -91,13 +216,26 @@ h2 {
 }
 
 /* Header */
+/* --- ANIMACIÓN DEL HEADER (CAÍDA) --- */
+
 header {
-    background: #6f00ff;
-    position: fixed;
+    /* 1. Estado Inicial: Lo movemos hacia arriba un 100% de su propia altura.
+       Así queda "escondido" justo fuera del borde superior de la pantalla. */
+    transform: translateY(-100%);
+    
+    /* 2. La transición suave para la bajada */
+    transition: transform 0.8s ease-out;
+    
+    /* 3. Asegúrate de que tenga un z-index alto, pero MENOR que el del loader (9999) */
+    position: fixed; /* o relative/absolute según tu diseño */
     top: 0;
     width: 100%;
-    z-index: 1000;
-    border-bottom: 2px solid #004cff;
+    z-index: 1000; 
+}
+
+/* Esta es la clase que JS añadirá para hacerlo bajar */
+header.header-drop-in {
+    transform: translateY(0); /* Vuelve a su sitio original */
 }
 
 nav {
@@ -681,6 +819,7 @@ footer {
         flex-direction: column;
         gap: 15px;
     }
+    
 }
 
 
