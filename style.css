@@ -1,0 +1,285 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: 'ConsolaMono';
+    src: url('ConsolaMono-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'FOT-Seurat Pro B';
+    src: url('FOT-Seurat Pro B.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'FOT-Seurat Pro EB';
+    src: url('FOT-Seurat Pro EB.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+/* Base */
+body {
+    font-family: 'ConsolaMono', monospace;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.85), rgba(236, 236, 236, 0.85)),
+        url('Background.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    line-height: 1.6;
+}
+
+.hero-logo {
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+    max-width: 800px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Tipografía */
+h1, h2, h3, .logo {
+    font-family: 'ConsolaMono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #000;
+    text-shadow:
+        -3px -3px 0 #fff,
+        -3px -2px 0 #fff,
+        -3px -1px 0 #fff,
+        -3px  0px 0 #fff,
+        -3px  1px 0 #fff,
+        -3px  2px 0 #fff,
+        -3px  3px 0 #fff,
+        -2px -3px 0 #fff,
+        -1px -3px 0 #fff,
+         0px -3px 0 #fff,
+         1px -3px 0 #fff,
+         2px -3px 0 #fff,
+         3px -3px 0 #fff,
+         3px -2px 0 #fff,
+         3px -1px 0 #fff,
+         3px  0px 0 #fff,
+         3px  1px 0 #fff,
+         3px  2px 0 #fff,
+         3px  3px 0 #fff,
+         2px  3px 0 #fff,
+         1px  3px 0 #fff,
+         0px  3px 0 #fff,
+        -1px  3px 0 #fff,
+        -2px  3px 0 #fff;
+}
+
+
+h2 {
+    margin-bottom: 30px;
+    color: #004cff;
+}
+
+/* Layout */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 20px;
+}
+
+/* Header */
+header {
+    background: #f6f6f6;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 2px solid #004cff;
+}
+
+nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #004cff;
+    font-weight: 700;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li a {
+    color: #1a1a1a;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #004cff;
+}
+
+/* Hero */
+#hero {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 120px;
+}
+
+#hero h1 {
+    font-size: 3rem;
+    color: #004cff;
+    margin-bottom: 15px;
+}
+
+/* About */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid #e0e0e0;
+}
+
+.about-grid h3 {
+    color: #004cff;
+    margin-bottom: 10px;
+}
+
+/* Games */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.game-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.game-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 76, 255, 0.15);
+}
+
+.game-img {
+    height: 450px;
+    background-size: cover;
+    background-position: center;
+}
+
+.game-detail {
+    padding: 20px;
+}
+
+.game-detail h3 {
+    color: #004cff;
+    margin-bottom: 10px;
+}
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+.member-card {
+    text-decoration: none;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #1a1a1a;
+}
+
+.member-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.member-card h4 {
+    color: #004cff;
+    margin-bottom: 5px;
+}
+
+.member-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 76, 255, 0.15);
+}
+.profile {
+    text-align: center;
+}
+
+.profile-img {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.profile-links {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.profile-links a {
+    color: #004cff;
+    text-decoration: none;
+    font-weight: 600;
+}
+.studio-img {
+    width: 100%;
+    margin-top: 25px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 1px solid #e0e0e0;
+}
+.social-links a {
+    margin: 0 10px;
+    color: #1a1a1a;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #004cff; /* Cambia el color al pasar el mouse */
+}
+
+
+/* Footer */
+footer {
+    background: #f6f6f6;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
